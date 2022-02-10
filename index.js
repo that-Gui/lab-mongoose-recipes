@@ -17,7 +17,21 @@ mongoose
   })
   .then(() => {
     // Run your code here, after you have insured that the connection was made
+    const breee = { title: 'Alice', cuisine: 'ironhack2018'};
+    /* const gooo = async () => {
+      await Recipe.create(breee);
+      await Recipe.insertMany(data);
+      await Recipe.updateOne({ title: 'Rigatoni alla Genovese'}, {duration: 100});
+      await Recipe.deleteOne({ title: 'Carrot Cake' });
+    } */
+    Recipe.create(breee).then((el) => console.log(el))
+    Recipe.insertMany(data).then((el) => console.log(el))
+    Recipe.findOneAndUpdate({ title: 'Rigatoni alla Genovese'}, {duration: 100}).then((el) => console.log(el))
+    Recipe.deleteOne({ title: 'Carrot Cake' }).then((el) => console.log(el)) // returns {deletedCount: 1}
+
   })
   .catch(error => {
     console.error('Error connecting to the database', error);
   });
+
+  getCoffee();
